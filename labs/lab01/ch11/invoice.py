@@ -1,13 +1,26 @@
 # Starting file for Lab 1 Chapter 11 invoice.py program
 # Bren Rodriguez, 10/15/26 DEV 128 Lab Activity 1
+# AI-assisted: I used Claude to understand date vs datetime objects, try/except validation, and reading tracebacks
 
 
 from datetime import datetime, date, timedelta
 
 def get_invoice_date():
-    invoice_date_str = input("Enter the invoice date (MM/DD/YYYY): ")    
-    invoice_date = datetime.strptime(invoice_date_str, "%m/%d/%Y").date()
-    return invoice_date
+    # while True explains that the loop will continue until a valid invoice date is entered
+    while True:
+        try:
+            invoice_date_str = input("Enter the invoice date (MM/DD/YYYY): ")
+
+            invoice_date = datetime.strptime(invoice_date_str, "%m/%d/%Y").date()
+            # comparing to today's date, if the invoice date is in the future, it is considered invalid and the user will be prompted again
+            if invoice_date > date.today():
+                print("Invoice date cannot be in the future.")
+                print()
+            else: 
+                return invoice_date
+        except ValueError:
+            print("Invalid date format. Please use MM/DD/YYYY.")
+            print()
 
 def main():
     print("The Invoice Due Date program")
