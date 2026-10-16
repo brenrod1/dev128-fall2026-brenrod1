@@ -1,6 +1,6 @@
 # Starting file for Lab 1 - Chapter 12 - book_catalog.py program
 # Bren Rodriguez,10/15/2026, DEV128 
-# AI assisted: I used Claude to understand nested dictionaries, looping with .items(), variable space, and debugging where my elif belonged in main().
+# AI assisted: I used Claude to understand nested dictionaries, looping with .items(), variable scope, and debugging where my elif belonged in main().
 
 def show_book(book_catalog):
     title = input("Title: ")
