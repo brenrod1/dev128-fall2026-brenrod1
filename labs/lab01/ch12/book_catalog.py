@@ -1,5 +1,6 @@
 # Starting file for Lab 1 - Chapter 12 - book_catalog.py program
-# Include your name, date, and class in the assignment comments (replace this line)
+# Bren Rodriguez,10/15/2026, DEV128 
+# AI assisted: I used Claude to understand nested dictionaries, looping with .items(), variable space, and debugging where my elif belonged in main().
 
 def show_book(book_catalog):
     title = input("Title: ")
@@ -39,8 +40,18 @@ def delete_book(book_catalog):
         print(f"{title} removed from catalog.")
     else:
         print(f"{title} doesn't exist in the catalog.")
-
+# list_books displays every book in the catalog
+def list_books(book_catalog):
+    if not book_catalog:
+        print("The catalog is empty.")
+    else:
+        for title, book in book_catalog.items():
+            print(f"Title:    {title}")
+            print(f"Author:   {book['author']}")
+            print(f"Pub year: {book['pubyear']}")
+            print()
 def display_menu():
+    
     print("The Book Catalog program")
     print()
     print("COMMAND MENU")
@@ -48,9 +59,11 @@ def display_menu():
     print("add -  Add book")
     print("edit - Edit book")
     print("del -  Delete book")
+    print("list - List all books")
     print("exit - Exit program")
 
 def main():
+    
     display_menu()
     book_catalog = {
         "Moby Dick": 
@@ -77,6 +90,8 @@ def main():
         elif command == "exit":
             print("Bye!")
             break
+        elif command == "list": 
+            list_books(book_catalog)
         else:
             print("Unknown command. Please try again.")
 
