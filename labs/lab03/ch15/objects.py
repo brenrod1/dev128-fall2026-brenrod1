@@ -21,13 +21,14 @@ class Product:
 @dataclass
 class Book(Product):
     author:str = ""
+    format:str =""
 
     def getDescription(self):
         return f"{Product.getDescription(self)} by {self.author}"
-
 @dataclass        
-class Movie(Product):
+class Movie(Product): 
     year:int = 0
+    format:str = ""
 
     def getDescription(self):
         return f"{Product.getDescription(self)} ({self.year})"

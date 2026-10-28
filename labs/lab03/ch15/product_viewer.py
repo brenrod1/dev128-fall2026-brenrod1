@@ -15,8 +15,10 @@ def show_product(product):
     print(f"{'Name:':{w}}{product.name}")
     if isinstance(product, Book):
         print(f"{'Author:':{w}}{product.author}")
+        print(f"{'Format:':{w}}{product.format}")
     if isinstance(product, Movie):
         print(f"{'Year:':{w}}{product.year}")
+        print(f"{'Format:':{w}}{product.format}")
     print(f"{'Discount price:':{w}}{product.getDiscountPrice():.2f}")
     print()
 
@@ -25,8 +27,8 @@ def main():
     print()
     
     products = (Product("Stanley 13 Ounce Wood Hammer", 12.99, 62),
-                Book("The Big Short", 15.95, 34, "Michael Lewis"),
-                Movie("The Holy Grail - DVD", 14.99, 68, 1975))
+                Book("The Big Short", 15.95, 34, "Michael Lewis", "Paperback"),
+                Movie("The Holy Grail", 14.99, 68, 1975, "DVD"))
     show_products(products)
 
     choice = "y"
