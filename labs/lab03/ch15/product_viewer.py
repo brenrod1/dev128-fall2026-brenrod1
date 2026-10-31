@@ -1,7 +1,7 @@
-# Starting file for Lab 3 - product_viewer.py
-# Include your name, class, and date in the assignment comment header
+# Bren Rodriguez, DEV128, October 30, 2026 Lab 3 - product_viewer.py
+# I used Claude to explain inheritance concepts and to debug errors.
 
-from objects import Product, Book, Movie
+from objects import Product, Book, Movie, Album, Media, VideoGame
 
 def show_products(products):
     print("PRODUCTS")
@@ -15,10 +15,14 @@ def show_product(product):
     print(f"{'Name:':{w}}{product.name}")
     if isinstance(product, Book):
         print(f"{'Author:':{w}}{product.author}")
-        print(f"{'Format:':{w}}{product.format}")
     if isinstance(product, Movie):
         print(f"{'Year:':{w}}{product.year}")
+    if isinstance(product, Album):
+        print(f"{'Artist:':{w}}{product.artist}")
+    if isinstance(product, Media):
         print(f"{'Format:':{w}}{product.format}")
+    if isinstance(product, VideoGame):
+        print(f"{'Platform:':{w}}{product.platform}")
     print(f"{'Discount price:':{w}}{product.getDiscountPrice():.2f}")
     print()
 
@@ -27,8 +31,11 @@ def main():
     print()
     
     products = (Product("Stanley 13 Ounce Wood Hammer", 12.99, 62),
-                Book("The Big Short", 15.95, 34, "Michael Lewis", "Paperback"),
-                Movie("The Holy Grail", 14.99, 68, 1975, "DVD"))
+                Book("The Big Short", 15.95, 34, "Paperback", "Michael Lewis"),
+                Movie("The Holy Grail", 14.99, 68, "DVD", 1975),
+                Album("Rubber Soul", 10.99, 15, "Cassette", "The Beatles"),
+                VideoGame("Minecraft", 29.99, 10, "Digital", "PC")) 
+     
     show_products(products)
 
     choice = "y"

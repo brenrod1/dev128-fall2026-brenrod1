@@ -1,5 +1,5 @@
-# Starting file for Lab 3 - objects.py
-# Include your name, class, and date in the assignment comment header
+# Bren Rodriguez, DEV128, October 30, 2026 Lab 3 - objects.py
+# I used Claude to explain inheritance concepts and to debug errors.
 
 from dataclasses import dataclass
 
@@ -19,16 +19,33 @@ class Product:
         return self.name
 
 @dataclass
-class Book(Product):
-    author:str = ""
-    format:str =""
-
-    def getDescription(self):
-        return f"{Product.getDescription(self)} by {self.author}"
-@dataclass        
-class Movie(Product): 
-    year:int = 0
+class Media(Product):
     format:str = ""
+    
+@dataclass
+class Book(Media):
+    author:str = ""
+   
+    def getDescription(self):
+        return f"{super().getDescription()} by {self.author}"
+    
+@dataclass        
+class Movie(Media): 
+    year:int = 0
+    
+    def getDescription(self):
+        return f"{super().getDescription()} ({self.year})"
+
+@dataclass
+class Album(Media):
+    artist:str = ""
 
     def getDescription(self):
-        return f"{Product.getDescription(self)} ({self.year})"
+        return f"{super().getDescription()} by {self.artist}"
+    
+@dataclass
+class VideoGame(Media):
+    platform:str = ""
+
+    def getDescription(self):
+        return f"{super().getDescription()} for {self.platform}"
